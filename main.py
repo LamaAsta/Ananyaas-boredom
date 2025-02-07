@@ -221,7 +221,7 @@ class Game:
                             self.start_shuffle = True
                         if button.text == "Reset":
                             self.new()
-# path = '../teriMaKi.jpg'
+
 game = Game(IPATH)
 while True:
     game.new()
