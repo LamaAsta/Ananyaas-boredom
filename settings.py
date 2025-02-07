@@ -13,4 +13,4 @@ title = "Sliding Puzzle Game"
 TILESIZE = 128
 GAME_SIZE = 3
 
-IPATH = "../teriMaKi.jpg"
+IPATH = "death.jpg"
