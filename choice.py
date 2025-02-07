@@ -47,13 +47,41 @@ class choiceWindow:
     def timeTaken(self):
         return self.endTime - self.startTime
     
+class washWindow:
+    def __init__(self):
+        self.end = False
+        pygame.init()
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption(TITLE)
 
-choice = choiceWindow()
-while True:
-    choice.new()
-    c = choice.run()
-    pygame.quit()
-    print("choice: ",c)
-    print("Time Taken:",choice.timeTaken())
+    def new(self):
+        self.b1 = Button(300, 100, 300, 100, "Start Next", WHITE, BLACK)
+        self.screen.fill(BGCOLOUR)
+        self.b1.draw(self.screen)
+        pygame.display.flip()
+
+    def events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit(0)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                if self.b1.click(mouse_x, mouse_y):
+                    self.end = True
     
-    break            
+    def run(self):
+        while not self.end:
+            self.events()
+        self.endTime = time.time()
+        return
+    
+
+# while True:
+#     choice.new()
+#     c = choice.run()
+#     pygame.quit()
+#     print("choice: ",c)
+#     print("Time Taken:",choice.timeTaken())
+    
+#     break            

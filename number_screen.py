@@ -4,12 +4,13 @@ from settings import *
 TITLE = "Wait Screen"
 
 class WaitScreen:
-    def __init__(self):
+    def __init__(self,n=2):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption(TITLE)    
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.Font(None, 50)
+        self.n = n*10
 
     def display_number(self):
         num = str(random.randint(0, 100))
@@ -18,9 +19,11 @@ class WaitScreen:
         self.screen.blit(text, (x, y))
 
     def run(self):
-        
         running = True
         while running:
+            if not self.n:
+                running = False
+            self.n -= 1
             self.screen.fill(WHITE) 
             self.display_number()
             
@@ -31,8 +34,6 @@ class WaitScreen:
             pygame.display.flip()
             pygame.time.delay(1000)  
 
-        pygame.quit()
-
-if __name__ == "__main__":
-    a = WaitScreen()
-    a.run()
+# if __name__ == "__main__":
+#     a = WaitScreen(1)
+#     a.run()
