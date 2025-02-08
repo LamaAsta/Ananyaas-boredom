@@ -4,7 +4,14 @@ import puzzle
 
 
 
+
 def run():
+    participant = choice.participantWindow()
+    participant.new()
+    pID = participant.run()
+
+    print("PID: ",pID)
+
     puzzle.game.new()
     puzzle.game.run()
     t = puzzle.random.randint(1,2)
@@ -49,7 +56,7 @@ def run():
     print("TIME2: ",timeTaken2)
     print("Bored2: ",boredLevel2)
     print(t2)
-    
+
     g1 = puzzle.Game("../raw1.jpeg",n = c)
     if c == 2:
         for i in range(20):

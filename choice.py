@@ -1,7 +1,7 @@
 import time
 import pygame
 from settings import *
-from sprite import Button
+from sprite import Button,InputBox
 
 TITLE  = "Choice"
 class choiceWindow:
@@ -76,6 +76,42 @@ class washWindow:
         self.endTime = time.time()
         return
     
+class participantWindow:
+    def __init__(self):
+        self.end = False
+        pygame.init()
+        self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption(TITLE)
+        self.b1 = Button(300, 100, 300, 100, "Start Puzzle", WHITE, BLACK)
+        self.input_box = InputBox(300, 250, 200, 50)
+
+    def new(self):
+        self.screen.fill(BGCOLOUR)
+        self.b1.draw(self.screen)
+        self.input_box.draw(self.screen)
+        pygame.display.flip()
+
+    def events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit(0)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                if self.b1.click(mouse_x, mouse_y):
+                    self.end = True
+                    
+            self.input_box.handle_event(event)
+    
+    def run(self):
+        while not self.end:
+            self.events()
+            self.screen.fill(BGCOLOUR)
+            self.b1.draw(self.screen)
+            self.input_box.draw(self.screen)
+            pygame.display.flip()
+        self.endTime = time.time()
+        return self.input_box.text
 
 class boredWindow:
     def __init__(self):
@@ -136,7 +172,7 @@ class boredWindow:
             self.events()
         return self.value
 
-
+# a = participantWindow()
 # while True:
 #     a.new()
 #     c = a.run()
