@@ -124,9 +124,9 @@ class Game:
             self.tiles.append([])
             for col, tile in enumerate(x):
                 if tile != 0:
-                    self.tiles[row].append(Tile(self, col, row, str(tile),self.dim,self.pieces[row][col]))
+                    self.tiles[row].append(Tile(self, col, row, str(tile),self.dim,self.n,self.pieces[row][col]))
                 else:
-                    self.tiles[row].append(Tile(self, col, row, "empty",self.dim))
+                    self.tiles[row].append(Tile(self, col, row, "empty",self.dim,self.n))
 
     def new(self):
         self.all_sprites = pygame.sprite.Group()
@@ -225,7 +225,7 @@ class Game:
                         if button.text == "Reset":
                             self.new()
 
-game = Game(n = 4)
-while True:
-    game.new()
-    game.run()
+game = Game(n = 3)
+# while True:
+#     game.new()
+#     game.run()

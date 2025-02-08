@@ -15,7 +15,7 @@ def run():
     c = ch.run()
     timeTaken1 = ch.timeTaken()
     print("TIME1: ",timeTaken1)
-    g1 = puzzle.Game(n = c)
+    g1 = puzzle.Game("../raw2.jpeg",n = c)
     g1.new()
     g1.run()
 
@@ -33,7 +33,7 @@ def run():
     c = ch2.run()
     timeTaken2 = ch2.timeTaken()
     print("TIME2: ",timeTaken2)
-    g1 = puzzle.Game(n = c)
+    g1 = puzzle.Game("../raw1.jpeg",n = c)
     g1.new()
     g1.run()
 

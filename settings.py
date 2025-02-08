@@ -1,8 +1,9 @@
 # COLORS (r, g, b)
-WHITE = (255, 255, 255)
+WHITE = (255, 250, 250)
 BLACK = (0, 0, 0)
 DARKGREY = (40, 40, 40)
 LIGHTGREY = (100, 100, 100)
+PGREY  = (192,192,192)
 BGCOLOUR = DARKGREY
 
 # game settings

@@ -15,7 +15,7 @@ class WaitScreen:
     def display_number(self):
         num = str(random.randint(0, 100))
         x, y = random.randint(0, WIDTH - 50), random.randint(0, HEIGHT - 50)
-        text = self.font.render(num, True, BLACK)
+        text = self.font.render(num, True, WHITE)
         self.screen.blit(text, (x, y))
 
     def run(self):
@@ -24,7 +24,7 @@ class WaitScreen:
             if not self.n:
                 running = False
             self.n -= 1
-            self.screen.fill(WHITE) 
+            self.screen.fill(BGCOLOUR) 
             self.display_number()
             
             for event in pygame.event.get():

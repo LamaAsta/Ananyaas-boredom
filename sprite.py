@@ -6,11 +6,12 @@ pygame.font.init()
 
 
 class Tile(pygame.sprite.Sprite):
-    def __init__(self, game, x, y, text,dim,surface = 20):
+    def __init__(self, game, x, y, text,dim,n,surface = 20):
         self.groups = game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.dim = dim
         self.game = game
+        self.n = n
         self.image = pygame.Surface(self.dim[::-1])
         self.x, self.y = x, y
         self.text = text
@@ -31,7 +32,7 @@ class Tile(pygame.sprite.Sprite):
         return self.rect.left <= mouse_x <= self.rect.right and self.rect.top <= mouse_y <= self.rect.bottom
 
     def right(self):
-        return self.rect.x + self.dim[1] < GAME_SIZE * self.dim[1]
+        return self.rect.x + self.dim[1] < self.n * self.dim[1]
 
     def left(self):
         return self.rect.x - self.dim[1] >= 0
@@ -40,7 +41,7 @@ class Tile(pygame.sprite.Sprite):
         return self.rect.y - self.dim[0] >= 0
 
     def down(self):
-        return self.rect.y + self.dim[0] < GAME_SIZE * self.dim[0]
+        return self.rect.y + self.dim[0] < self.n * self.dim[0]
 
 
 class UIElement:
