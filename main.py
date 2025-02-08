@@ -15,7 +15,7 @@ def halfPart(t):
     ch.new()
     c = ch.run()
     timeTaken = ch.timeTaken()
-    g1 = puzzle.Game("../raw2.jpeg",n = c)
+    g1 = puzzle.Game("raw2.jpeg",n = c)
     if c == 2:
         s = time.time()
         while time.time() - s <= 10 :
