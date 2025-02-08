@@ -15,8 +15,8 @@ class choiceWindow:
 
     def new(self):
         self.buttons_list = []
-        self.buttons_list.append(Button(300, 100, 300, 100, "2X2 Puzzle", WHITE, BLACK))
-        self.buttons_list.append(Button(300, 400, 300, 100, "6X6 Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(440, 100, 300, 100, "2X2 Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(440, 400, 300, 100, "6X6 Puzzle", WHITE, BLACK))
         self.screen.fill(BGCOLOUR)
         for i in self.buttons_list:
             i.draw(self.screen)
@@ -55,7 +55,7 @@ class washWindow:
         pygame.display.set_caption(TITLE)
 
     def new(self):
-        self.b1 = Button(300, 100, 300, 100, "Start Next", WHITE, BLACK)
+        self.b1 = Button(440, 100, 300, 100, "Start Next", WHITE, BLACK)
         self.screen.fill(BGCOLOUR)
         self.b1.draw(self.screen)
         pygame.display.flip()
@@ -82,8 +82,8 @@ class participantWindow:
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         pygame.display.set_caption(TITLE)
-        self.b1 = Button(300, 100, 300, 100, "Start Puzzle", WHITE, BLACK)
-        self.input_box = InputBox(300, 250, 200, 50)
+        self.b1 = Button(440, 100, 300, 100, "Start Puzzle", WHITE, BLACK)
+        self.input_box = InputBox(440, 250, 300, 50)
 
     def new(self):
         self.screen.fill(BGCOLOUR)

@@ -77,7 +77,7 @@ class Button:
 class InputBox:
     def __init__(self, x, y, w, h, font_size=36):
         self.rect = pygame.Rect(x, y, w, h)
-        self.color = BLACK
+        self.color = WHITE
         self.text = ""
         self.font = pygame.font.Font(None, font_size)
         self.active = False
