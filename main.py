@@ -16,25 +16,27 @@ def halfPart(t):
     c = ch.run()
     timeTaken = ch.timeTaken()
     g1 = puzzle.Game("raw2.jpeg",n = c)
+    completed = 0
+    elapsed = 0
     if c == 2:
         s = time.time()
         while time.time() - s <= 10 :
             g1.new()
-            g1.run()
+            completed,elapsed = g1.run()
     if c == 6:
         g1.new()
-        g1.run()
-    return c,timeTaken,boredLevel
+        completed,elapsed = g1.run()
+    return c,timeTaken,boredLevel,completed,elapsed
 
 
 def writter(*args):
     ls = os.listdir("./")
     if 'results.csv' not in ls:
         a = open('results.csv',"w+")
-        a.write("PID,Time1,choiceRT,choice made,Time1,choiceRT,choice made\n")
+        a.write("PID,Time1,BoredLevel,choiceRT,choice made,Completed,PuzzleTime,Time2,BoredLevel,choiceRT,choice made,Completed,PuzzleTime\n")
         a.close()
     a = open('results.csv','a')
-    s = ','.join([str(i).strip(" ' ") for i in args])[1:-2]
+    s = ','.join([str(i).strip(" ' ") for i in args])[1:-1]
     print(s)
     a.write(s+'\n')
     a.close()
@@ -51,7 +53,7 @@ def run():
 
     t = puzzle.random.randint(1,2)
     
-    c1, Tt1, b1 = halfPart(t)
+    c1, Tt1, b1, com1, e1 = halfPart(t)
 
     wash = choice.washWindow()
     wash.new()
@@ -64,9 +66,9 @@ def run():
     else:
         t2 = 1
 
-    c2, Tt2, b2 = halfPart(t2)
+    c2, Tt2, b2, com2, e2 = halfPart(t2)
 
-    return pID,c1,Tt1,b1,c2,Tt2,b2
+    return pID,t,b1,Tt1,c1,com1,e1,t2,b2,Tt2,c2,com2,e2
 
 
 if __name__ == '__main__':

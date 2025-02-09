@@ -60,6 +60,8 @@ class Game:
         self.start_timer = False
         self.elapsed_time = 0
         self.high_score = float(self.get_high_scores()[0])
+        self.time = time.time()
+        self.completed = 0
 
     def get_high_scores(self):
         with open("high_score.txt", "r") as file:
@@ -138,7 +140,9 @@ class Game:
         self.buttons_list = []
         self.buttons_list.append(Button(700, 100, 200, 50, "Shuffle", WHITE, BLACK))
         self.buttons_list.append(Button(700, 170, 200, 50, "Reset", WHITE, BLACK))
+        self.buttons_list.append(Button(700, 240, 200, 50, "End Game", WHITE, BLACK))
         self.draw_tiles()
+        print(self.buttons_list)
 
     def run(self):
         self.playing = True
@@ -147,12 +151,14 @@ class Game:
             self.events()
             self.update()
             self.draw()
+        return self.completed,self.elapsed_time
 
     def update(self):
         if self.start_game:
             if self.tiles_grid == self.tiles_grid_completed:
                 self.start_game = False
                 self.playing = False
+                self.completed = 1
                 if self.high_score > 0:
                     self.high_score = self.elapsed_time if self.elapsed_time < self.high_score else self.high_score
                 else:
@@ -186,8 +192,11 @@ class Game:
         self.screen.fill(BGCOLOUR)
         self.all_sprites.draw(self.screen)
         self.draw_grid()
-        for button in self.buttons_list:
+        
+        for button in self.buttons_list[:-1]:
             button.draw(self.screen)
+        if time.time()-self.time>30:
+            self.buttons_list[-1].draw(self.screen)
         UIElement(550, 35, "%.3f" % self.elapsed_time).draw(self.screen)
         # UIElement(430, 300, "High Score - %.3f" % (self.high_score if self.high_score > 0 else 0)).draw(self.screen)
         pygame.display.flip()
@@ -224,6 +233,8 @@ class Game:
                             self.start_shuffle = True
                         if button.text == "Reset":
                             self.new()
+                        if button.text == "End Game":
+                            self.playing = False
 
 game = Game(n = 3)
 # while True:
