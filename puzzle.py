@@ -142,7 +142,7 @@ class Game:
         self.buttons_list.append(Button(700, 170, 200, 50, "Reset", WHITE, BLACK))
         self.buttons_list.append(Button(700, 240, 200, 50, "End Game", WHITE, BLACK))
         self.draw_tiles()
-        print(self.buttons_list)
+
 
     def run(self):
         self.playing = True
@@ -195,7 +195,7 @@ class Game:
         
         for button in self.buttons_list[:-1]:
             button.draw(self.screen)
-        if time.time()-self.time>30:
+        if time.time()-self.time>60*QUIT_MINUTES:
             self.buttons_list[-1].draw(self.screen)
         UIElement(550, 35, "%.3f" % self.elapsed_time).draw(self.screen)
         # UIElement(430, 300, "High Score - %.3f" % (self.high_score if self.high_score > 0 else 0)).draw(self.screen)

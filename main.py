@@ -4,6 +4,8 @@ import puzzle
 import time
 import os 
 
+COMPLETE_TIME = 60*5
+BaseTime = 5
 
 def halfPart(t):
     w1 = number_screen.WaitScreen(t)
@@ -20,7 +22,7 @@ def halfPart(t):
     elapsed = 0
     if c == 2:
         s = time.time()
-        while time.time() - s <= 10 :
+        while time.time() - s <= COMPLETE_TIME :
             g1.new()
             completed,elapsed = g1.run()
     if c == 6:
@@ -52,8 +54,12 @@ def run():
     puzzle.game.run()
 
     t = puzzle.random.randint(1,2)
+    if t == 1:
+        t1 = 2*BaseTime 
+    else:
+        t1 = 4*BaseTime
     
-    c1, Tt1, b1, com1, e1 = halfPart(t)
+    c1, Tt1, b1, com1, e1 = halfPart(t1)
 
     wash = choice.washWindow()
     wash.new()
@@ -62,13 +68,13 @@ def run():
     
 
     if t == 1:
-        t2 = 2
+        t2 = 4*BaseTime 
     else:
-        t2 = 1
+        t2 = 2*BaseTime 
 
     c2, Tt2, b2, com2, e2 = halfPart(t2)
 
-    return pID,t,b1,Tt1,c1,com1,e1,t2,b2,Tt2,c2,com2,e2
+    return pID,t1,b1,Tt1,c1,com1,e1,t2,b2,Tt2,c2,com2,e2
 
 
 if __name__ == '__main__':

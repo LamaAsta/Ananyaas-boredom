@@ -13,5 +13,5 @@ FPS = 240
 title = "Sliding Puzzle Game"
 TILESIZE = 128
 GAME_SIZE = 3
-
+QUIT_MINUTES = 6
 IPATH = "death.jpg"

@@ -10,7 +10,7 @@ class WaitScreen:
         pygame.display.set_caption(TITLE)    
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font(None, 50)
-        self.n = n*10
+        self.n = n*60
 
     def display_number(self):
         num = str(random.randint(0, 100))
