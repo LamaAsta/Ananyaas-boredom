@@ -5,7 +5,7 @@ import time
 import os 
 
 COMPLETE_TIME = 60*5
-BaseTime = 5
+BaseTime = 0.5
 
 def halfPart(t):
     w1 = number_screen.WaitScreen(t)
@@ -20,14 +20,16 @@ def halfPart(t):
     g1 = puzzle.Game("raw2.jpeg",n = c)
     completed = 0
     elapsed = 0
+    timer = time.time()
     if c == 2:
         s = time.time()
         while time.time() - s <= COMPLETE_TIME :
             g1.new()
-            completed,elapsed = g1.run()
+            completed = g1.run()
     if c == 6:
         g1.new()
-        completed,elapsed = g1.run()
+        completed = g1.run()
+    elapsed = time.time()-timer
     return c,timeTaken,boredLevel,completed,elapsed
 
 

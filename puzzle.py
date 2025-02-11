@@ -151,7 +151,7 @@ class Game:
             self.events()
             self.update()
             self.draw()
-        return self.completed,self.elapsed_time
+        return self.completed
 
     def update(self):
         if self.start_game:
