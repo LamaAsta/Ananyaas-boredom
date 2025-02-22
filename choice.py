@@ -15,8 +15,11 @@ class choiceWindow:
 
     def new(self):
         self.buttons_list = []
-        self.buttons_list.append(Button(440, 100, 300, 100, "2X2 Puzzle", WHITE, BLACK))
-        self.buttons_list.append(Button(440, 400, 300, 100, "6X6 Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(200+200-70, 100, 300, 100, "4 Piece Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(200+200-70, 300, 300, 100, "9 Piece Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(200+540-70, 100, 300, 100, "16 Piece Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(200+540-70, 300, 300, 100, "25 Piece Puzzle", WHITE, BLACK))
+        self.buttons_list.append(Button(230+340-70, 500, 300, 100, "36 Piece Puzzle", WHITE, BLACK))
         self.screen.fill(BGCOLOUR)
         for i in self.buttons_list:
             i.draw(self.screen)
@@ -37,10 +40,19 @@ class choiceWindow:
                 mouse_x, mouse_y = pygame.mouse.get_pos()
                 for button in self.buttons_list:
                     if button.click(mouse_x, mouse_y):
-                        if button.text == "2X2 Puzzle":
+                        if button.text == "4 Piece Puzzle":
                             self.puzzle_size = 2
                             self.end = True
-                        if button.text == "6X6 Puzzle":
+                        if button.text == "9 Piece Puzzle":
+                            self.puzzle_size = 3
+                            self.end = True
+                        if button.text == "16 Piece Puzzle":
+                            self.puzzle_size = 4
+                            self.end = True
+                        if button.text == "25 Piece Puzzle":
+                            self.puzzle_size = 5
+                            self.end = True
+                        if button.text == "36 Piece Puzzle":
                             self.puzzle_size = 6
                             self.end = True
 
@@ -179,7 +191,7 @@ class boredWindow:
 #     print(c)           
 #     pygame.quit()
 #     break
-
+# choice = choiceWindow()
 # while True:
 #     choice.new()
 #     c = choice.run()

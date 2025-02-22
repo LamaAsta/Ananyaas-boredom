@@ -4,7 +4,7 @@ import puzzle
 import time
 import os 
 
-COMPLETE_TIME = 60*5
+COMPLETE_TIME = 60*1
 BaseTime = 0.5
 
 def halfPart(t):
@@ -21,14 +21,14 @@ def halfPart(t):
     completed = 0
     elapsed = 0
     timer = time.time()
-    if c == 2:
+    if c == 6:
+        g1.new()
+        completed = g1.run()
+    else:
         s = time.time()
         while time.time() - s <= COMPLETE_TIME :
             g1.new()
             completed = g1.run()
-    if c == 6:
-        g1.new()
-        completed = g1.run()
     elapsed = time.time()-timer
     return c,timeTaken,boredLevel,completed,elapsed
 
@@ -52,8 +52,8 @@ def run():
 
     print("PID: ",pID)
 
-    puzzle.game.new()
-    puzzle.game.run()
+    # puzzle.game.new()
+    # puzzle.game.run()
 
     t = puzzle.random.randint(1,2)
     if t == 1:
